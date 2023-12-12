@@ -1,7 +1,6 @@
 #root {
   max-width: 1280px;
   margin: 0 auto;
-  padding: 2rem;
   text-align: center;
 }
 
@@ -10,7 +9,7 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  width: 100hv;
+  width: 100%;
 }
 
 .image-container img {
@@ -31,4 +30,26 @@
 .button-container button {
   background-color: #888;
   width: 50%;
+}
+
+/* For screens in landscape orientation or wider than taller */
+@media screen and (orientation: landscape) {
+  .image-container img {
+    width: 80%;
+  }
+
+  .button-container {
+    width: 80%;
+  }
+}
+
+/* For screens in portrait orientation or taller than wider */
+@media screen and (orientation: portrait) {
+  .image-container img {
+    width: 100%;
+  }
+
+  .button-container {
+    width: 100%;
+  }
 }

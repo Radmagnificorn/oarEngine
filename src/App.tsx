@@ -25,11 +25,26 @@ function App() {
   }, []);
 
   const handleNext = () => {
-    setPageIndex((pageIndex + 1) % outline.chapters[chapterIndex]?.pages.length);
+    const pages = outline.chapters[chapterIndex]?.pages.length;
+    if (pageIndex < pages - 1) {
+      setPageIndex(pageIndex + 1);
+    } else {
+      if (chapterIndex < outline.chapters.length - 1) {
+        setChapterIndex(chapterIndex + 1);
+        setPageIndex(0);
+      }
+    }
   };
 
   const handlePrevious = () => {
-    setPageIndex((pageIndex - 1 + outline.chapters[chapterIndex]?.pages.length) % outline.chapters[chapterIndex]?.pages.length);
+    if (pageIndex > 0) {
+      setPageIndex(pageIndex - 1);
+    } else {
+      if (chapterIndex > 0) {
+        setPageIndex(outline.chapters[chapterIndex - 1].pages.length - 1);
+        setChapterIndex(chapterIndex - 1);
+      }
+    }
   };
 
   return (

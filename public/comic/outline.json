@@ -2,13 +2,20 @@
     "title": "Reposessioin: Occult Artifact Retrieval Team",
     "chapters": [
         {
+            "title": "Title",
+            "directory": "title",
+            "pages": ["title.png"]
+        },
+        {
             "title": "The Headless Horseman",
             "directory": "chapter1",
             "pages": [
                 "frame01.png",
                 "frame02.png",
                 "frame03.png",
-                "frame04.png"
+                "frame04.png",
+                "frame05.png",
+                "frame06.png"
             ]
         }
     ]
