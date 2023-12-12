@@ -39,13 +39,13 @@ function App() {
         src={`comic/${outline.chapters[chapterIndex]?.directory}/${outline.chapters[chapterIndex]?.pages[pageIndex]}`}
         alt=""
         onClick={handleNext}
-        style={{ width: '100%', cursor: 'pointer' }}
       />
       
       <div className="button-container">
         <button onClick={handlePrevious}>Previous</button>
         <button onClick={handleNext}>Next</button>
       </div>
+      <div>Chapter: {chapterIndex} - Page: {pageIndex}</div>
     </div>
   );
 }
