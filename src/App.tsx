@@ -1,35 +1,53 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
+import { useEffect, useState } from 'react'
 import './App.css'
+import { Comic } from './ComicOutline';
 
 function App() {
-  const [count, setCount] = useState(0)
+  const [outline, setOutline] = useState<Comic>(new Comic());
+  const [chapterIndex, setChapterIndex] = useState<number>(0);
+  const [pageIndex, setPageIndex] = useState<number>(0);
+
+  useEffect(() => {
+    const fetchManifest = async () => {
+      try {
+        const response = await fetch('comic/outline.json');
+        const data = await response.json();
+        setOutline(data);
+        setChapterIndex(0); // need to use it somewhere to make the compiler happy for now
+        console.log(JSON.stringify(outline));
+      } catch (error) {
+        console.error('Error fetching images:', error);
+      }
+    }
+
+    fetchManifest();
+
+  }, []);
+
+  const handleNext = () => {
+    setPageIndex((pageIndex + 1) % outline.chapters[chapterIndex]?.pages.length);
+  };
+
+  const handlePrevious = () => {
+    setPageIndex((pageIndex - 1 + outline.chapters[chapterIndex]?.pages.length) % outline.chapters[chapterIndex]?.pages.length);
+  };
 
   return (
-    <>
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src='/oarEngine/comic/chapter1/frame01.png' className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
+    <div className="image-container">
       
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
+      <img
+        src={`comic/${outline.chapters[chapterIndex]?.directory}/${outline.chapters[chapterIndex]?.pages[pageIndex]}`}
+        alt=""
+        onClick={handleNext}
+        style={{ width: '100%', cursor: 'pointer' }}
+      />
+      
+      <div className="button-container">
+        <button onClick={handlePrevious}>Previous</button>
+        <button onClick={handleNext}>Next</button>
       </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
+    </div>
+  );
 }
 
 export default App
