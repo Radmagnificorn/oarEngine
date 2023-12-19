@@ -10,12 +10,15 @@
             "title": "The Headless Horseman",
             "directory": "chapter1",
             "pages": [
+                "lib_title.png",
+                "lib01.png",
+                "cem_title.png",
                 "frame01.png",
                 "frame02.png",
                 "frame03.png",
                 "frame04.png",
                 "frame05.png",
-                "frame06.png"
+                "cem06_halt.png"
             ]
         }
     ]
