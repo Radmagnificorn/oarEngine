@@ -32,6 +32,12 @@
   width: 50%;
 }
 
+.modal {
+  background-color: #777;
+  align-content: center;
+
+}
+
 /* For screens in landscape orientation or wider than taller */
 @media screen and (orientation: landscape) {
   .image-container img {

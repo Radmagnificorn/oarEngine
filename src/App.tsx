@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react'
 import './App.css'
 import { Comic } from './ComicOutline';
 import TableOfContents from './table_of_contents/TableOfContents';
+import Modal from 'react-modal';
 
 function App() {
   const [outline, setOutline] = useState<Comic>(new Comic());
@@ -25,6 +26,8 @@ function App() {
     fetchManifest();
 
   }, []);
+
+  Modal.setAppElement('#root')
 
   const handleNext = () => {
     const pages = outline.chapters[chapterIndex]?.pages.length;
@@ -68,7 +71,14 @@ function App() {
         <button onClick={handleNext}>Next</button>
       </div>
       <div onClick={() => setShowTOC(!showTOC)}>Chapter: {chapterIndex} - Page: {pageIndex}</div>
-      { showTOC ? <TableOfContents toc={outline} setCAP={setChapterAndPage}/> : null }
+      <Modal
+        className="modal"
+        isOpen={showTOC}
+        onRequestClose={() => setShowTOC(false)}
+      >
+        <button onClick={() => setShowTOC(false)}>close</button>
+        <TableOfContents toc={outline} setCAP={setChapterAndPage}/>
+      </Modal>
     </div>
   );
 }
