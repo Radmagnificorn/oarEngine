@@ -1,11 +1,13 @@
 import { useEffect, useState } from 'react'
 import './App.css'
 import { Comic } from './ComicOutline';
+import TableOfContents from './table_of_contents/TableOfContents';
 
 function App() {
   const [outline, setOutline] = useState<Comic>(new Comic());
   const [chapterIndex, setChapterIndex] = useState<number>(0);
   const [pageIndex, setPageIndex] = useState<number>(0);
+  const [showTOC, setShowTOC] = useState<boolean>(false);
 
   useEffect(() => {
     const fetchManifest = async () => {
@@ -47,6 +49,11 @@ function App() {
     }
   };
 
+  const setChapterAndPage = (chapter: number, page: number) => {
+    setChapterIndex(chapter);
+    setPageIndex(page);
+  }
+
   return (
     <div className="image-container">
       
@@ -60,7 +67,8 @@ function App() {
         <button onClick={handlePrevious}>Previous</button>
         <button onClick={handleNext}>Next</button>
       </div>
-      <div>Chapter: {chapterIndex} - Page: {pageIndex}</div>
+      <div onClick={() => setShowTOC(!showTOC)}>Chapter: {chapterIndex} - Page: {pageIndex}</div>
+      { showTOC ? <TableOfContents toc={outline} setCAP={setChapterAndPage}/> : null }
     </div>
   );
 }
