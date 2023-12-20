@@ -15,15 +15,15 @@ function TOCChapter({ chapter, chapterIndex, setCAP }: TOCChapterArgs) {
         const pageIndex = chapter.pages.indexOf(page);
         
         return (
-            <li onClick={() => setCAP(chapterIndex, pageIndex)}>Page: {pageIndex}</li>
+            <span onClick={() => setCAP(chapterIndex, pageIndex)}>Page: {pageIndex} | </span>
         );
     }
 
     return (
-        <li>
+        <div>
             <p onClick={() => setShowPages(!showPages)}>{chapter.title}</p>
-            { showPages ? <ul>{chapter.pages.map((page) => renderPage(page))}</ul> : null }
-        </li>
+            { showPages ? <div>{chapter.pages.map((page) => renderPage(page))}</div> : null }
+        </div>
     );
 }
 
