@@ -13,14 +13,11 @@ function TableOfContents({ toc, setCAP }: TOCArgs) {
 
     return (
         <div>
-            Table of Contents
-            <div>
-                {toc.chapters.map((chapter) => {
-                    const index = chapterIndex;
-                    chapterIndex++;
-                    return (<TOCChapter chapter={chapter} chapterIndex={index} setCAP={setCAP} />)
-                })}
-            </div>
+            {toc.chapters.map((chapter) => {
+                const index = chapterIndex;
+                chapterIndex++;
+                return (<TOCChapter chapter={chapter} chapterIndex={index} setCAP={setCAP} />)
+            })}
         </div>
     );
 }

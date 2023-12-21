@@ -55,6 +55,7 @@ function App() {
   const setChapterAndPage = (chapter: number, page: number) => {
     setChapterIndex(chapter);
     setPageIndex(page);
+    setShowTOC(false);
   }
 
   return (
@@ -75,9 +76,30 @@ function App() {
         className="modal"
         isOpen={showTOC}
         onRequestClose={() => setShowTOC(false)}
+        style={{
+          overlay: {
+            backgroundColor: "rgba(0, 0, 0, 0.5)", // dark semitransparent overlay
+          },
+          content: {
+            backgroundColor: "#333", // dark background for the content
+            color: "#fff", // white text
+            maxWidth: "80%", // limit the width of the content
+            maxHeight: "80%", // limit the height of the content
+            margin: "auto", // center the content
+            overflow: "auto", // hide the overflow
+            position: "relative", // position the content relative to the overlay
+            borderRadius: "10px", // round the corners of the content
+            boxShadow: "0 0 10px rgba(0, 0, 0, 0.5)", // add a shadow effect
+            top: "10%",
+            
+          },
+        }}
       >
-        <button onClick={() => setShowTOC(false)}>close</button>
-        <TableOfContents toc={outline} setCAP={setChapterAndPage}/>
+        <button onClick={() => setShowTOC(false)}>Close</button>
+        <div className='modalContent'>
+          <h2 className="heading">Table of Contents</h2>
+          <TableOfContents toc={outline} setCAP={setChapterAndPage}/>
+        </div>
       </Modal>
     </div>
   );

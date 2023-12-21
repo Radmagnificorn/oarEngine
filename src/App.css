@@ -32,10 +32,34 @@
   width: 50%;
 }
 
-.modal {
-  background-color: #777;
-  align-content: center;
+.darkBG {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+}
 
+.centered {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+}
+
+.modalContent {
+  margin: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  height: 100%;
+}
+
+.modalContent button {
+  float: right;
 }
 
 /* For screens in landscape orientation or wider than taller */

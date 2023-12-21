@@ -21,7 +21,7 @@ function TOCChapter({ chapter, chapterIndex, setCAP }: TOCChapterArgs) {
 
     return (
         <div>
-            <p onClick={() => setShowPages(!showPages)}>{chapter.title}</p>
+            <h3 onClick={() => setShowPages(!showPages)}>{chapter.title}</h3>
             { showPages ? <div>{chapter.pages.map((page) => renderPage(page))}</div> : null }
         </div>
     );
