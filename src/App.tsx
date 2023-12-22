@@ -60,7 +60,6 @@ function App() {
 
   return (
     <div className="image-container">
-      
       <img
         src={`comic/${outline.chapters[chapterIndex]?.directory}/${outline.chapters[chapterIndex]?.pages[pageIndex]}`}
         alt=""
