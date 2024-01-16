@@ -20,6 +20,21 @@
                 "frame05.png",
                 "cem06_halt.png"
             ]
+        },
+        {
+            "title": "3D Images Test",
+            "directory": "hdtest",
+            "pages": [
+                "frame0010.png",
+                "frame0020.png",
+                "frame0030.png",
+                "frame0040.png",
+                "frame0050.png",
+                "frame0060.png",
+                "frame0070.png",
+                "frame0080.png",
+                "frame0090.png"
+            ]
         }
     ]
 }
