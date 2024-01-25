@@ -18,6 +18,7 @@
   height: auto;
   image-rendering: pixelated;
   -ms-interpolation-mode: nearest-neighbor;  /* IE (non-standard property) */
+  position: relative;
 }
 
 .button-container {
